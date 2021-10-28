@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+<body>
+
+
+
+<div style="padding-top: 10%; margin-left: 30%; margin-right: 30%;">
+<form action = "" method = "POST">
+     {% csrf_token %}
+  <div class="row">
+    <div class="col">
+        <label for="name">Your Name (Name,Surname): </label>
+        <input type="text" class="form-control" placeholder="First name" name="your_name" required>
+        <label for="name">StudentID: </label>
+        <input type="text" class="form-control" placeholder="Last name" name="stud_id" required>
+    </div>
+  </div>
+    <div style="padding-left:  47%; padding-right: 53%;  padding-top: 10px">
+     <button style="text-align: center" type="submit" class="btn btn-primary mb-2">Submit</button>
+    </div>
+</form>
+</div>
+<div>
+
+{% if not_found %}
+    <h1 style="text-align: center">{{ not_found }}</h1>
+{% endif %}
+
+</div>
+<div style="margin-left: 30%; margin-right: 30%;">
+{% for students in student %}
+    <ul>
+    {{ students.student_id }} || {{ students.student_name }} || {{ students.DBMS }} || {{ students.CNS }} {{ students.IOTES }} ||
+    {{ students.SPOS }} || {{ students.TOC }} || {{ students.aggregate }} || {{ students.Total }}
+    </ul>
+{% endfor %}
+</div>
+</body>
+</html>
