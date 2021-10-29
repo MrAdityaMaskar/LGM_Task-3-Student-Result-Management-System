@@ -1,0 +1,75 @@
+{% extends 'core.html' %}
+{% block title %}Result{%  endblock title %}
+{% block studinfo %}Student Info{% endblock studinfo %}
+{% block studinfo_path %}/student_info/{% endblock studinfo_path %}
+{% block result %}{% endblock result %}
+{% block Path %}/{% endblock Path %}
+{% block home %}Home{% endblock home %}
+{% block body %}
+<div style="padding-top: 10%; margin-left: 30%; margin-right: 30%;">
+<form action = "" method = "POST">
+     {% csrf_token %}
+  <div class="row">
+    <div class="col">
+        <label for="name">Your Name (First Last): </label>
+        <input type="text" class="form-control" placeholder="First name" name="your_name" required>
+        <label for="name">StudentID: </label>
+        <input type="text" class="form-control" placeholder="Last name" name="stud_id" required>
+    </div>
+  </div>
+    <div style="padding-left:  47%; padding-right: 53%;  padding-top: 10px">
+     <button style="text-align: center" type="submit" class="btn btn-primary mb-2">Submit</button>
+    </div>
+</form>
+</div>
+<div>
+
+</div>
+
+
+{% for request in check %}
+    {% if request == 'Aditya' %}
+
+<div style="margin-left: 10%; margin-right: 10%;">
+<table class="table table-striped">
+
+
+<thead>
+    <tr>
+      <th scope="col">Student ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">DBMS</th>
+      <th scope="col">CNS</th>
+      <th scope="col">IOTES</th>
+      <th scope="col">SPOS</th>
+      <th scope="col">TOC</th>
+      <th scope="col">Aggregate</th>
+      <th scope="col">Total</th>
+        <th scope="col">Percentage</th>
+    </tr>
+  </thead>
+ <tbody>
+    {% for students in student %}
+    <tr>
+      <th scope="row">{{ students.student_id }}</th>
+      <td>{{ students.student_name }}</td>
+        <td>{{ students.DBMS }}</td>
+        <td>{{ students.CNS }}</td>
+        <td>{{ students.IOTES }}</td>
+        <td>{{ students.SPOS }}</td>
+        <td>{{ students.TOC }}</td>
+        <td>{{ students.aggregate }}</td>
+        <td>{{ students.Total }}</td>
+        <td>{% widthratio students.aggregate students.Total 100 %}</td>
+
+    </tr>
+      {% endfor %}
+  </tbody>
+
+</table>
+</div>
+    {% endif %}
+{% endfor %}
+
+
+{% endblock body %}

@@ -1,0 +1,57 @@
+{% extends 'core.html' %}
+{% block Path %}/{% endblock Path %}
+{% block studinfo_path %}{% endblock studinfo_path %}
+{% block title %}Student Info{%  endblock title %}
+{% block studinfo %}{% endblock studinfo %}
+{% block result_path %}/result{% endblock result_path %}
+{% block result %}Result{% endblock result %}
+{% block home %}Home{% endblock home %}
+{% block body %}
+
+<div style="margin-left: 30%; margin-right: 30%;">
+    <h1 style="text-align: center; padding-top: 20px">Student Information</h1>
+
+<div style="padding-top: 10%; margin-left: 30%; margin-right: 30%;">
+<form action = "" method = "POST">
+     {% csrf_token %}
+  <div class="row">
+    <div class="col">
+        <label for="name">Your Name (First Last): </label>
+        <input type="text" class="form-control" placeholder="First name" name="your_name" required>
+        <label for="name">StudentID: </label>
+        <input type="number" class="form-control" placeholder="Student ID" name="stud_id" required>
+    </div>
+  </div>
+    <div style="padding-left:  47%; padding-right: 53%;  padding-top: 10px">
+     <button style="text-align: center" type="submit" class="btn btn-primary mb-2">Submit</button>
+    </div>
+</form>
+</div>
+
+{% for req in check %}
+    {% if req == 'Aditya' %}
+<table class="table table-striped">
+
+
+<thead>
+    <tr>
+      <th scope="col">Name</th>
+    </tr>
+  </thead>
+ <tbody>
+ {% for students in studentinfo %}
+    <tr>
+
+      <th scope="row">#</th>
+      <td>{{ students.student_name }}</td>
+
+    </tr>
+ {% endfor %}
+  </tbody>
+
+</table>
+
+ {% endif %}
+{% endfor %}
+</div>
+{% endblock body %}
