@@ -12,6 +12,10 @@ from django.db import models
 
 class StudentList(models.Model):
     student_name = models.CharField(max_length=200)
+    course = models.CharField(max_length=200, null=True)
+    email = models.EmailField(null=True)
+    phone = models.CharField(max_length=200,  null=True)
+    address = models.TextField(default='Something')
 
     def __str__(self):
         return self.student_name

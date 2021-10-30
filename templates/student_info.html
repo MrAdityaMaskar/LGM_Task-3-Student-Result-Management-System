@@ -1,4 +1,5 @@
 {% extends 'core.html' %}
+
 {% block Path %}/{% endblock Path %}
 {% block studinfo_path %}{% endblock studinfo_path %}
 {% block title %}Student Info{%  endblock title %}
@@ -19,7 +20,7 @@
         <label for="name">Your Name (First Last): </label>
         <input type="text" class="form-control" placeholder="First name" name="your_name" required>
         <label for="name">StudentID: </label>
-        <input type="number" class="form-control" placeholder="Student ID" name="stud_id" required>
+        <input type="email" class="form-control" placeholder="Email" name="email" required>
     </div>
   </div>
     <div style="padding-left:  47%; padding-right: 53%;  padding-top: 10px">
@@ -28,30 +29,40 @@
 </form>
 </div>
 
-{% for req in check %}
-    {% if req == 'Aditya' %}
+{% for request in check %}
+    {% if request == 'Aditya' %}
+
+<div style="margin-left: 10%; margin-right: 10%;">
 <table class="table table-striped">
 
 
 <thead>
     <tr>
+      <th scope="col"></th>
       <th scope="col">Name</th>
+      <th scope="col">Course</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Address</th>
     </tr>
   </thead>
  <tbody>
- {% for students in studentinfo %}
+    {% for students in studentinfo %}
     <tr>
-
-      <th scope="row">#</th>
+      <th scope="row">@</th>
       <td>{{ students.student_name }}</td>
-
+        <td>{{ students.course }}</td>
+        <td>{{ students.email }}</td>
+        <td>{{ students.phone }}</td>
+        <td>{{ students.address }}</td>
     </tr>
- {% endfor %}
+      {% endfor %}
   </tbody>
 
 </table>
-
- {% endif %}
+</div>
+    {% endif %}
 {% endfor %}
+
 </div>
 {% endblock body %}

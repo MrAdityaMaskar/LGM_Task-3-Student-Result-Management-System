@@ -8,7 +8,8 @@ from .models import StudentList
 
 def student(request):
     if request.method == 'POST':
-        cont = StudentList.objects.filter(student_name=request.POST['your_name'])
+        cont = StudentList.objects.filter(email=request.POST['email'])
+        print(cont)
         check = ['Aditya']
         extra_context = {'studentinfo': cont, 'check': check}
         return render(request, 'student_info.html', extra_context)
