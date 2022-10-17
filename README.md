@@ -1,4 +1,4 @@
-# Sample-Student-Management-System
+# Sample-Student-Result-Management-System
 Just Sample of Student Result Management System
 
 
